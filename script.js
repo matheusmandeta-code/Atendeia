@@ -3,12 +3,12 @@ const entrada = document.querySelector("#entrada");
 const mensagens = document.querySelector("#mensagens");
 
 function adicionarMensagem(texto, tipo) {
-  const mensagem = document.createElement("div");
+  const novaMensagem = document.createElement("div");
 
-  mensagem.className = tipo;
-  mensagem.innerText = texto;
+  novaMensagem.className = tipo;
+  novaMensagem.textContent = texto;
 
-  mensagens.appendChild(mensagem);
+  mensagens.appendChild(novaMensagem);
   mensagens.scrollTop = mensagens.scrollHeight;
 }
 
@@ -59,9 +59,18 @@ function criarResposta(texto) {
     mensagem.includes("endereço") ||
     mensagem.includes("endereco") ||
     mensagem.includes("localização") ||
-    mensagem.includes("localizacao")
+    mensagem.includes("localizacao") ||
+    mensagem.includes("onde vocês ficam") ||
+    mensagem.includes("onde voces ficam")
   ) {
     return "Posso enviar a localização. Qual unidade você deseja visitar?";
+  }
+
+  if (
+    mensagem.includes("obrigado") ||
+    mensagem.includes("obrigada")
+  ) {
+    return "Por nada! Estou aqui para ajudar.";
   }
 
   return "Entendi. Pode me explicar um pouco melhor o que você precisa?";
@@ -77,6 +86,7 @@ formulario.addEventListener("submit", function (evento) {
   }
 
   adicionarMensagem(texto, "usuario");
+
   entrada.value = "";
   entrada.focus();
 
