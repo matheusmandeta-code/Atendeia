@@ -1,79 +1,39 @@
-const formulario = document.querySelector("#formulario");
-const entrada = document.querySelector("#entrada");
-const mensagens = document.querySelector("#mensagens");
+const formulario=document.querySelector("#formulario");
 
-function adicionarMensagem(texto, tipo) {
-  const mensagem = document.createElement("div");
+const entrada=document.querySelector("#entrada");
 
-  mensagem.classList.add("mensagem", tipo);
-  mensagem.textContent = texto;
+const mensagens=document.querySelector("#mensagens");
 
-  mensagens.appendChild(mensagem);
-  mensagens.scrollTop = mensagens.scrollHeight;
-}
+formulario.addEventListener("submit",function(e){
 
-function criarResposta(texto) {
-  const mensagem = texto.toLowerCase();
+e.preventDefault();
 
-  if (
-    mensagem.includes("oi") ||
-    mensagem.includes("olá") ||
-    mensagem.includes("ola")
-  ) {
-    return "Olá! Como posso ajudar você hoje?";
-  }
+const texto=entrada.value;
 
-  if (
-    mensagem.includes("preço") ||
-    mensagem.includes("preco") ||
-    mensagem.includes("valor")
-  ) {
-    return "Posso informar os preços. Qual serviço você procura?";
-  }
+if(texto=="") return;
 
-  if (
-    mensagem.includes("horário") ||
-    mensagem.includes("horario") ||
-    mensagem.includes("funciona")
-  ) {
-    return "O atendimento funciona de segunda a sábado, das 8h às 18h.";
-  }
+const usuario=document.createElement("div");
 
-  if (
-    mensagem.includes("agendar") ||
-    mensagem.includes("marcar") ||
-    mensagem.includes("agenda")
-  ) {
-    return "Claro! Qual dia e horário você prefere?";
-  }
+usuario.className="usuario";
 
-  if (
-    mensagem.includes("endereço") ||
-    mensagem.includes("endereco") ||
-    mensagem.includes("localização") ||
-    mensagem.includes("localizacao")
-  ) {
-    return "Posso enviar a localização. Qual unidade você deseja visitar?";
-  }
+usuario.innerText=texto;
 
-  return "Entendi. Pode me explicar melhor o que você precisa?";
-}
+mensagens.appendChild(usuario);
 
-formulario.addEventListener("submit", function (evento) {
-  evento.preventDefault();
+entrada.value="";
 
-  const texto = entrada.value.trim();
+setTimeout(function(){
 
-  if (!texto) {
-    return;
-  }
+const ia=document.createElement("div");
 
-  adicionarMensagem(texto, "cliente");
-  entrada.value = "";
-  entrada.focus();
+ia.className="ia";
 
-  setTimeout(function () {
-    const resposta = criarResposta(texto);
-    adicionarMensagem(resposta, "ia");
-  }, 700);
+ia.innerText="Você escreveu: "+texto;
+
+mensagens.appendChild(ia);
+
+mensagens.scrollTop=mensagens.scrollHeight;
+
+},700);
+
 });
