@@ -1,5 +1,14 @@
 const botao = document.querySelector("button");
 
 botao.addEventListener("click", function () {
-  alert("Em breve você poderá testar a AtendeIA!");
+  const nome = prompt("Qual é o nome da sua empresa?");
+
+  if (!nome) {
+    alert("Tudo bem. Você pode testar depois.");
+    return;
+  }
+
+  alert(
+    `Olá! Eu sou a AtendeIA da empresa ${nome}. Como posso ajudar você hoje?`
+  );
 });
