@@ -56,7 +56,7 @@ function criarResposta(texto) {
     return "Posso enviar a localização. Qual unidade você deseja visitar?";
   }
 
-  return "Entendi. Pode me explicar um pouco melhor o que você precisa?";
+  return "Entendi. Pode me explicar melhor o que você precisa?";
 }
 
 formulario.addEventListener("submit", function (evento) {
