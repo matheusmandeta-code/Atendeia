@@ -1,58 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AtendeIA</title>
 
-  <title>AtendeIA</title>
+<link rel="stylesheet" href="style.css">
 
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="app">
-    <section class="apresentacao">
-      <span class="etiqueta">Atendimento inteligente</span>
+<div class="container">
 
-      <h1>AtendeIA 🤖</h1>
+<div class="texto">
 
-      <p>
-        Uma recepcionista virtual para responder clientes,
-        informar preços e ajudar com agendamentos.
-      </p>
-    </section>
+<span class="tag">Atendimento Inteligente</span>
 
-    <section class="chat">
-      <header class="chat-topo">
-        <div class="avatar">AI</div>
+<h1>AtendeIA 🤖</h1>
 
-        <div>
-          <strong>AtendeIA</strong>
-          <span>Online agora</span>
-        </div>
-      </header>
+<p>
+A recepcionista virtual para responder clientes,
+agendar horários e atender sua empresa 24 horas por dia.
+</p>
 
-      <div id="mensagens" class="mensagens">
-        <div class="mensagem ia">
-          Olá! Sou a AtendeIA. Como posso ajudar?
-        </div>
-      </div>
+</div>
 
-      <form id="formulario" class="campo-mensagem">
-        <input
-          id="entrada"
-          type="text"
-          placeholder="Digite sua mensagem..."
-          autocomplete="off"
-          required
-        >
+<div class="chat">
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+<div class="topo">
 
-  <script src="script.js"></script>
+<div class="avatar">AI</div>
+
+<div>
+
+<h3>AtendeIA</h3>
+
+<p>Online agora</p>
+
+</div>
+
+</div>
+
+<div id="mensagens" class="mensagens">
+
+<div class="ia">
+Olá! Sou a AtendeIA. Como posso ajudar?
+</div>
+
+</div>
+
+<form id="formulario">
+
+<input
+id="entrada"
+type="text"
+placeholder="Digite sua mensagem..."
+>
+
+<button>Enviar</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
