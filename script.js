@@ -1,39 +1,87 @@
-const formulario=document.querySelector("#formulario");
+const formulario = document.querySelector("#formulario");
+const entrada = document.querySelector("#entrada");
+const mensagens = document.querySelector("#mensagens");
 
-const entrada=document.querySelector("#entrada");
+function adicionarMensagem(texto, tipo) {
+  const mensagem = document.createElement("div");
 
-const mensagens=document.querySelector("#mensagens");
+  mensagem.className = tipo;
+  mensagem.innerText = texto;
 
-formulario.addEventListener("submit",function(e){
+  mensagens.appendChild(mensagem);
+  mensagens.scrollTop = mensagens.scrollHeight;
+}
 
-e.preventDefault();
+function criarResposta(texto) {
+  const mensagem = texto.toLowerCase();
 
-const texto=entrada.value;
+  if (
+    mensagem.includes("oi") ||
+    mensagem.includes("olá") ||
+    mensagem.includes("ola")
+  ) {
+    return "Olá! Eu sou a AtendeIA. Como posso ajudar você hoje?";
+  }
 
-if(texto=="") return;
+  if (
+    mensagem.includes("seu nome") ||
+    mensagem.includes("quem é você") ||
+    mensagem.includes("quem e voce")
+  ) {
+    return "Meu nome é AtendeIA. Sou uma recepcionista virtual.";
+  }
 
-const usuario=document.createElement("div");
+  if (
+    mensagem.includes("preço") ||
+    mensagem.includes("preco") ||
+    mensagem.includes("valor")
+  ) {
+    return "Claro! Qual serviço você gostaria de consultar?";
+  }
 
-usuario.className="usuario";
+  if (
+    mensagem.includes("horário") ||
+    mensagem.includes("horario") ||
+    mensagem.includes("funciona")
+  ) {
+    return "O atendimento funciona de segunda a sábado, das 8h às 18h.";
+  }
 
-usuario.innerText=texto;
+  if (
+    mensagem.includes("agendar") ||
+    mensagem.includes("marcar") ||
+    mensagem.includes("consulta")
+  ) {
+    return "Claro! Qual dia e horário você prefere?";
+  }
 
-mensagens.appendChild(usuario);
+  if (
+    mensagem.includes("endereço") ||
+    mensagem.includes("endereco") ||
+    mensagem.includes("localização") ||
+    mensagem.includes("localizacao")
+  ) {
+    return "Posso enviar a localização. Qual unidade você deseja visitar?";
+  }
 
-entrada.value="";
+  return "Entendi. Pode me explicar um pouco melhor o que você precisa?";
+}
 
-setTimeout(function(){
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();
 
-const ia=document.createElement("div");
+  const texto = entrada.value.trim();
 
-ia.className="ia";
+  if (!texto) {
+    return;
+  }
 
-ia.innerText="Você escreveu: "+texto;
+  adicionarMensagem(texto, "usuario");
+  entrada.value = "";
+  entrada.focus();
 
-mensagens.appendChild(ia);
-
-mensagens.scrollTop=mensagens.scrollHeight;
-
-},700);
-
+  setTimeout(function () {
+    const resposta = criarResposta(texto);
+    adicionarMensagem(resposta, "ia");
+  }, 700);
 });
