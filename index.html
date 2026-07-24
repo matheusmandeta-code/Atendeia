@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>AtendeIA</title>
 
   <link rel="stylesheet" href="style.css">
@@ -10,15 +11,46 @@
 
 <body>
 
-  <main class="hero">
-    <h1>AtendeIA 🤖</h1>
+  <main class="app">
+    <section class="apresentacao">
+      <span class="etiqueta">Atendimento inteligente</span>
 
-    <p>
-      A recepcionista inteligente que atende sua empresa
-      24 horas por dia.
-    </p>
+      <h1>AtendeIA 🤖</h1>
 
-    <button>Quero conhecer</button>
+      <p>
+        Uma recepcionista virtual para responder clientes,
+        informar preços e ajudar com agendamentos.
+      </p>
+    </section>
+
+    <section class="chat">
+      <header class="chat-topo">
+        <div class="avatar">AI</div>
+
+        <div>
+          <strong>AtendeIA</strong>
+          <span>Online agora</span>
+        </div>
+      </header>
+
+      <div id="mensagens" class="mensagens">
+        <div class="mensagem ia">
+          Olá! Sou a AtendeIA. Como posso ajudar?
+        </div>
+      </div>
+
+      <form id="formulario" class="campo-mensagem">
+        <input
+          id="entrada"
+          type="text"
+          placeholder="Digite sua mensagem..."
+          autocomplete="off"
+          required
+        >
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
   </main>
 
   <script src="script.js"></script>
